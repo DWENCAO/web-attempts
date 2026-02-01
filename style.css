@@ -1,0 +1,199 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    width: 100vw;
+    height: auto;
+    flex-direction: column;
+    display: flex;
+    perspective: 2500px;
+}
+
+.intro{
+    height: 100vh;
+    width: 100vw;
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-family: monospace;
+    color:aliceblue;
+    background: black;
+    gap:32px;
+}
+
+.text1,
+.text2,
+.text3{
+    position:relative;
+}
+
+.text1::after,.text1::before{
+    content:'';
+    position:absolute;
+    inset: 0;
+}
+
+.text1::before{
+    background-color: black;
+    animation: move 4s steps(11) forwards;
+}
+
+.text1::after{
+    background: #fff;
+    width: 4px;
+    animation: move 4s steps(11) forwards,blink 1s infinite;
+}
+
+.text2::after,.text2::before{
+    content:'';
+    position:absolute;
+    inset: 0;
+}
+
+.text2::before{
+    background-color: black;
+    animation: move 2s steps(5) forwards 5.5s;
+}
+
+.text2:after{
+    background: #fff;
+    width: 4px;
+    animation: move 2s steps(5) forwards 5.5s,blink 1s infinite;
+}
+
+.text3::after,.text3::before{
+    content:'';
+    position:absolute;
+    inset: 0;
+}
+
+.text3::before{
+    background-color: black;
+    animation: move 2s steps(5) forwards 8.5s;
+}
+
+.text3::after{
+    background: #fff;
+    width: 4px;
+    animation: move 2s steps(5) forwards 8.5s,blink 1s infinite;
+}
+@keyframes blink{
+    from,to{
+        background: transparent;
+    }
+    50%{
+        background: rgb(255, 254, 254);
+    }
+}
+
+@keyframes move{
+    from{
+        left:0;
+    }
+    to{
+        left:100%;
+    }
+} 
+
+.pic{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+
+}
+
+
+.pic img{
+    position: absolute;
+    width: 350px;
+    height: 200px;
+    padding-top: 10px;
+    border-radius: 5px;
+    -webkit-box-reflect: below 15px linear-gradient(transparent 20%, rgba(240, 230, 230, 0.2));
+}
+
+.pic a{
+    position: absolute;
+    width: 350px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.pic:hover{
+    cursor: pointer;
+    animation-play-state: paused;
+}
+
+.pic a:nth-child(1){
+    transform: translateZ(500px);
+    transition: all 0.5s ease;
+}
+
+.pic a:nth-child(2){
+    transform: rotateY(60deg) translateZ(500px);
+    transition: all 0.5s ease;
+}
+
+.pic a:nth-child(3){
+    transform: rotateY(120deg) translateZ(500px);
+    transition: all 0.5s ease;
+}
+
+.pic a:nth-child(4){
+    transform: rotateY(180deg) translateZ(500px);
+    transition: all 0.5s ease;
+}
+
+.pic a:nth-child(5) {
+    transform: rotateY(240deg) translateZ(500px);
+    transition: all 0.5s ease;
+}
+
+.pic a:nth-child(6){
+    transform: rotateY(300deg) translateZ(500px);
+    transition: all 0.5s ease;
+}
+    
+.pic a:nth-child(1):hover {
+    transform: scale(1.1) translateZ(500px);
+}
+
+.pic a:nth-child(2):hover{
+    transform: scale(1.1) rotateY(60deg) translateZ(500px);
+}
+
+.pic a:nth-child(3):hover {
+    transform: scale(1.1) rotateY(120deg) translateZ(500px);
+}
+.pic a:nth-child(4):hover{
+    transform: scale(1.1) rotateY(180deg) translateZ(500px);
+}
+.pic a:nth-child(5):hover {
+    transform: scale(1.1) rotateY(240deg) translateZ(500px);
+}
+.pic a:nth-child(6):hover{
+    transform: scale(1.1) rotateY(300deg) translateZ(500px);
+}
+
+@keyframes rotate{
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
