@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="pic">
+  <img src="./img/财神.png" alt="">
+  </div>
+  <div class="title">
+    <p class="text text1">当前积累财运</p>
+    <p class="text text2"><span>0</span>元</p>
+    <div class="congratulation-container"></div>
+    <footer>点我接好运</footer>
+    <audio src="./music/一颗.mp3" class="music1"></audio>
+    <audio src="./music/一堆.mp3" class="music2"></audio>
+    <script>
+      let money=0
+      const arr=[1,10,100,1000]
+      const cong=[
+        '恭喜发财',
+        '财运+1',
+        '万事顺遂',
+        '烦恼-9999',
+        '前程似锦',
+        '策马扬帆',
+        '2026万事大吉',
+        '骏马贺新春',
+      ]
+      const music1=document.querySelector('.music1')
+      const music2=document.querySelector('.music2')
+      let index
+      span=document.querySelector('span')
+      document.querySelector('img').addEventListener('click',function(e){
+        const random=Math.random()
+        if(random<=0.7){
+          index=0
+          music1.currentTime=0
+          music1.play()
+        }
+        else if(random>0.7&&random<=0.85){
+          index=1
+          music1.currentTime=0
+          music1.play()
+        }
+        else if(random>0.8&&random<=0.9){
+          index=2
+          music1.currentTime=0
+          music1.play()
+        }
+        else if(random>0.95&&random<=1){
+          index=3
+          music2.currentTime=0
+          music2.play()
+        }
+        money+=arr[index]
+        // span.innerText=`${money}`
+        let num=money
+        function number(num){
+          return num.toLocaleString()
+        }
+        span.innerText=number(num)
+
+        const x=e.clientX
+        const y=e.clientY
+        const random2=Math.floor(Math.random()*cong.length)
+        const congratu=document.createElement('span1')
+        congratu.innerHTML=cong[random2]
+        if(index===2){
+          congratu.style.color='yellow'
+          congratu.style.fontSize='3.5em'
+        }
+        else if(index===3){
+          congratu.style.color='yellow'
+          congratu.style.fontSize='5em'
+          congratu.style.textShadow='0 0 15px rgba(255,215,0,1)'
+        }
+        const congratulation=document.querySelector('.congratulation-container')
+        congratulation.prepend(congratu)
+        congratu.classList.add('float')
+        congratu.style.left=`${x}px`
+        congratu.style.top=`${y}px`
+        setTimeout(function(){
+        congratu.remove()
+      },2000)
+      })
+
+      
+    </script>
+  </div>
+</body>
+</html>
